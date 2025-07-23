@@ -1,5 +1,15 @@
+import AddEntryModal from "./AddEntryModal";
+import { useState } from "react";
+
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">React + TailwindCSS</h1>;
+  const [addFlag, setAddFlag] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setAddFlag(true)}>add a new diary</button>
+      {addFlag && <AddEntryModal setAddFlag={setAddFlag} />}
+    </div>
+  );
 };
 
 export default App;
