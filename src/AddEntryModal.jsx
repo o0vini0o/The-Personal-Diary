@@ -44,7 +44,7 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
           onClick={() => setAddFlag(false)} // 点击背景关闭
         ></div>
         <div
-          data-theme="light"
+          data-theme="caramellatte"
           className="relative flex justify-center items-center w-full max-w-2xl m-4 z-50"
         >
           <form

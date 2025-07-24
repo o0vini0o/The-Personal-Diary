@@ -1,7 +1,7 @@
 const DiaryCard = ({ diary, setOpenDiary }) => {
   return (
     <div onClick={() => setOpenDiary(true)}>
-      <div className="card-xs bg-base-100 w-96 shadow-sm">
+      <div className="card-xs bg-base-100 w-[140px] h-[140px] shadow-sm">
         <div className="card-body">
           <h2 className="card-title">{diary.title}</h2>
           <p>
@@ -9,7 +9,11 @@ const DiaryCard = ({ diary, setOpenDiary }) => {
           </p>
         </div>
         <figure>
-          <img src={diary.pic} alt={diary.title} />
+          <img
+            className="object-cover rounded"
+            src={diary.pic}
+            alt={diary.title}
+          />
         </figure>
       </div>
     </div>
