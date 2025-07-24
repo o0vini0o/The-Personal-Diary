@@ -36,66 +36,84 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 max-w-md mx-auto mt-20 shadow-lg max-h-[80vh] overflow-auto gb-white">
-      <form className="flex flex-col item p-2 gap-4" action="submit">
-        <label className="grid grid-cols-[100px_1fr] items-center gap-2">
-          <span className="mr-8">Title:</span>
-          <input
-            name="title"
-            type="text"
-            placeholder="title"
-            value={diary.title}
-            onChange={handleChange}
-            className="input input-md input-secondary"
-          />
-        </label>
-        <label className="grid grid-cols-[100px_1fr] items-center gap-2">
-          <span className="mr-6">Date:</span>
-          <input
-            name="date"
-            type="date"
-            value={diary.date}
-            onChange={handleChange}
-            className="input input-secondary"
-          />
-        </label>
-        <label className="grid grid-cols-[100px_1fr] items-center gap-2">
-          <span className="mr-4">Picture:</span>
-          <input
-            name="pic"
-            type="text"
-            placeholder="URL"
-            value={diary.pic}
-            onChange={handleChange}
-            className="input input-md input-secondary"
-          />
-        </label>
-        <label className="grid grid-cols-[100px_1fr] items-center gap-2">
-          <span className="mr-2">Content:</span>
-          <textarea
-            name="text"
-            placeholder="Secondary"
-            value={diary.text}
-            onChange={handleChange}
-            className="textarea textarea-secondary"
-          ></textarea>
-        </label>
-
-        <div className="flex justify-center gap-18">
-          <button
-            onClick={handleSubmit}
-            className="btn btn-accent"
-            type="submit"
-            disabled={blockSubmit}
+    <div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center ">
+        {/* 背景遮罩层 */}
+        <div
+          className="absolute inset-0 "
+          onClick={() => setAddFlag(false)} // 点击背景关闭
+        ></div>
+        <div
+          data-theme="light"
+          className="relative flex justify-center items-center w-full max-w-2xl m-4 z-50"
+        >
+          <form
+            className="flex flex-col w-full overflow-auto p-8 gap-4"
+            action="submit"
           >
-            {blockSubmit ? "Entering..." : "submit"}
-          </button>
+            <label className="flex justify-center items-center gap-2">
+              <span className="w-24">Title:</span>
+              <input
+                name="title"
+                type="text"
+                placeholder="title"
+                value={diary.title}
+                onChange={handleChange}
+                className="input input-md input-secondary"
+              />
+            </label>
+            <label className="flex justify-center items-center gap-2">
+              <span className="w-24">Date:</span>
+              <input
+                name="date"
+                type="date"
+                value={diary.date}
+                onChange={handleChange}
+                className="input input-secondary"
+              />
+            </label>
+            <label className="flex justify-center items-center gap-2">
+              <span className="w-24">Picture:</span>
+              <input
+                name="pic"
+                type="text"
+                placeholder="URL"
+                value={diary.pic}
+                onChange={handleChange}
+                className="input input-md input-secondary"
+              />
+            </label>
+            <label className="flex justify-center items-center gap-2">
+              <span className="w-24"> Content:</span>
+              <textarea
+                name="text"
+                placeholder="Secondary"
+                value={diary.text}
+                onChange={handleChange}
+                className="textarea textarea-secondary"
+              ></textarea>
+            </label>
 
-          <button className="btn btn-accent" onClick={() => setAddFlag(false)}>
-            cancel
-          </button>
+            <div className="flex justify-center gap-18">
+              <button
+                onClick={handleSubmit}
+                className="btn btn-accent"
+                type="submit"
+                disabled={blockSubmit}
+              >
+                {blockSubmit ? "Entering..." : "submit"}
+              </button>
+
+              <button
+                className="btn btn-accent"
+                onClick={() => setAddFlag(false)}
+              >
+                cancel
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

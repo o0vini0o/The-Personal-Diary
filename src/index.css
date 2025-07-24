@@ -1,4 +1,2 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: dim --default;
-}
+@plugin "daisyui";
