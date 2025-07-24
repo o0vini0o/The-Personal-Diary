@@ -45,7 +45,7 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
         ></div>
         <div
           data-theme="caramellatte"
-          className="relative flex justify-center items-center w-full max-w-2xl m-4 z-50"
+          className="relative flex justify-center items-center w-full max-w-2xl h-2/3 m-4 z-50"
         >
           <form
             className="flex flex-col w-full overflow-auto p-8 gap-4"
@@ -94,7 +94,7 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
               ></textarea>
             </label>
 
-            <div className="flex justify-center gap-18">
+            <div className="flex justify-center gap-18 mt-10">
               <button
                 onClick={handleSubmit}
                 className="btn btn-accent"
