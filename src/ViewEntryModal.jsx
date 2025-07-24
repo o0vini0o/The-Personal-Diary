@@ -1,10 +1,17 @@
-const ViewEntryModal = ({ diary, setOpenDiary }) => {
+const ViewEntryModal = ({ diary, setOpenDiary, setDiaries }) => {
+  const handleDelete = () => {
+    const diaries = JSON.parse(localStorage.getItem("diaries"));
+    const updates = diaries.filter((d) => !(d.date === diary.date));
+    localStorage.setItem("diaries", JSON.stringify(updates));
+    setDiaries(updates);
+    setOpenDiary({ open: false, date: null });
+  };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center ">
       {/* 背景遮罩层 */}
       <div
         className="absolute inset-0 "
-        onClick={() => setOpenDiary(false)} // 点击背景关闭
+        onClick={() => setOpenDiary({ open: false, date: null })} // 点击背景关闭
       ></div>
       <div
         data-theme="caramellatte"
@@ -26,10 +33,22 @@ const ViewEntryModal = ({ diary, setOpenDiary }) => {
             alt={diary.title}
           />
         </div>
-
-        <button onClick={() => setOpenDiary(false)} className="btn btn-accent">
-          return
-        </button>
+        <div
+          className="flex justify-center
+         gap-32"
+        >
+          <div className="space-x-64">
+            <button onClick={handleDelete} className="btn btn-error">
+              delete
+            </button>{" "}
+            <button
+              onClick={() => setOpenDiary({ open: false, date: null })}
+              className="btn btn-accent"
+            >
+              return
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

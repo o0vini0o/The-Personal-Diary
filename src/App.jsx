@@ -5,17 +5,20 @@ import { useState } from "react";
 
 const App = () => {
   const [addFlag, setAddFlag] = useState(false);
-  const [openDiary, setOpenDiary] = useState(false);
+  const [openDiary, setOpenDiary] = useState({ open: false, date: null });
   const [diaries, setDiaries] = useState(
     JSON.parse(localStorage.getItem("diaries")) || []
   );
 
-  // const test = {
-  //   date: "2025-07-22",
-  //   title: "Gentle Nighttime Reflections",
-  //   pic: "https://images.pexels.com/photos/416947/pexels-photo-416947.jpeg",
-  //   text: "Tonight I took a slow walk through my neighborhood just as the street lamps flickered on. The air was cool, and houses glowed softly under the deepening twilight. I walked with my thoughts, noticing the stillness of empty roads and the comforting hush that comes as night falls. Passing by a cozy porch light, I felt a sense of quiet contentment. It was a simple, serene moment that made me appreciate the beauty of everyday life.",
-  // };
+  // let diary = {}
+  const handleClick = (date) => {
+    setOpenDiary({
+      open: true,
+      date: date,
+    });
+  };
+  const selectedDiary = diaries.find((diary) => diary.date === openDiary.date);
+
   return (
     <div>
       <nav className="flex justify-center py-2">
@@ -30,11 +33,22 @@ const App = () => {
           diaries={diaries}
         />
       )}
-      <div>
-        <DiaryCard diary={diaries[0]} setOpenDiary={setOpenDiary} />
+      <div className="grid grid-cols-2 gap-8 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {diaries.map((diary) => (
+          <DiaryCard
+            key={diary.date}
+            diary={diary}
+            handleClick={handleClick}
+            setOpenDiary={setOpenDiary}
+          />
+        ))}
       </div>
-      {openDiary && (
-        <ViewEntryModal diary={diaries[0]} setOpenDiary={setOpenDiary} />
+      {openDiary.open && (
+        <ViewEntryModal
+          diary={selectedDiary}
+          setOpenDiary={setOpenDiary}
+          setDiaries={setDiaries}
+        />
       )}
     </div>
   );
