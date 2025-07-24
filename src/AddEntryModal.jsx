@@ -22,11 +22,11 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
     e.preventDefault();
     if (diaries.some((prop) => prop.date === diary.date))
       return alert("Entry for today already exists. Try again tomorrow!");
-    console.log(diary);
 
     const updated = [diary, ...diaries];
     setDiaries(updated);
     localStorage.setItem("diaries", JSON.stringify(updated));
+    setAddFlag(false);
     setDiary({
       date: "",
       title: "",
