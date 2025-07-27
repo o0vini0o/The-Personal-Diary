@@ -33,7 +33,7 @@ const App = () => {
           diaries={diaries}
         />
       )}
-      <div className="grid grid-cols-2 gap-8 p-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-8 p-4 md:grid-cols-3 lg:grid-cols-4">
         {diaries.map((diary) => (
           <DiaryCard
             key={diary.date}

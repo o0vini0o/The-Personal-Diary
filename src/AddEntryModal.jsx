@@ -87,7 +87,7 @@ const AddEntryModal = ({ setAddFlag, diaries, setDiaries }) => {
               <span className="w-24"> Content:</span>
               <textarea
                 name="text"
-                placeholder="Secondary"
+                placeholder="text"
                 value={diary.text}
                 onChange={handleChange}
                 className="textarea textarea-secondary"
