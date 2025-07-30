@@ -93,7 +93,7 @@ const AddEntryModal = () => {
                   placeholder="text"
                   value={diary.text}
                   onChange={handleChange}
-                  className="textarea textarea-secondary"
+                  className="textarea textarea-secondary h-64"
                 ></textarea>
               </label>
 
